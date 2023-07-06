@@ -1,23 +1,72 @@
 import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from './GlobalStyle'
+import Header from './components/Header';
+import Logo from './components/logo';
+import imgLogo from "../src/assets/img/LogoMain.png";
+import Button from './components/Button';
+import { useState } from 'react';
+import Banner from './components/Banner';
+import Footer from './components/Footer';
+import {colorSecundario,colorbtnClean } from './components/Ui/Variables';
+import Icono from './components/Icono';
+import {AiFillHome} from 'react-icons/ai'
+
+
+
+
 
 function App() {
-  return (
+
+  const [btns, setBtn]=useState([
+    {
+      tipo: 'btnNew',
+      background: '#000000',
+      fontColor: '#ffffff'
+    },
+    {
+      tipo: 'btnSave',
+      background: colorSecundario,
+      fontColor: '#ffffff'
+    },
+    {
+      tipo: 'btnClean',
+      background: colorbtnClean,
+      fontColor: '#000000'
+    },
+    {
+      tipo: 'btnHome',
+      background: '',
+      fontColor: ''
+    },
+  ]);
+
+
+
+
+  return (    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <GlobalStyle/>
+      <Header>
+        <Logo 
+          src={imgLogo}
+          tipo='header'
+        />  
+        <Button
+          onClick={()=>console.log("New Video!")}
+          variant="btnHome"
+          datos={btns}
         >
-          Learn React
-        </a>
-      </header>
+          Nuevo Video
+        </Button>
+
+      </Header>
+      <Banner/>
+      <Footer>
+      <Logo 
+        src={imgLogo}
+        tipo='footer'  
+      />
+      </Footer>
     </div>
   );
 }
