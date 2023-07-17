@@ -7,11 +7,13 @@ const Icono=styled.i`
     display: flex;
     align-items: center;
     justify-content: center; 
-    color   : ${colorSecundario} ;  
+    color   : ${colorSecundario} ;
+    margin-right: 25px;
     
     svg{
         height: 40px;
-    width: 40px;
+        width: 40px;
+        
     }
 `;
 

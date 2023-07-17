@@ -1,73 +1,26 @@
-import logo from './logo.svg';
 import GlobalStyle from './GlobalStyle'
-import Header from './components/Header';
-import Logo from './components/logo';
-import imgLogo from "../src/assets/img/LogoMain.png";
-import Button from './components/Button';
-import { useState } from 'react';
-import Banner from './components/Banner';
-import Footer from './components/Footer';
-import {colorSecundario,colorbtnClean } from './components/Ui/Variables';
-import Icono from './components/Icono';
-import {AiFillHome} from 'react-icons/ai'
-
-
-
+import { BrowserRouter,Route,Routes,Navigate } from 'react-router-dom';
+import Home from './Pages/Home';
+import NewVideo from './Pages/NewVideo';
+import NewCategory from './Pages/NewCategory'
+import Error404 from './Pages/Error404';
+import DefaultPage from './components/DefaultPage'
 
 
 function App() {
 
-  const [btns, setBtn]=useState([
-    {
-      tipo: 'btnNew',
-      background: '#000000',
-      fontColor: '#ffffff'
-    },
-    {
-      tipo: 'btnSave',
-      background: colorSecundario,
-      fontColor: '#ffffff'
-    },
-    {
-      tipo: 'btnClean',
-      background: colorbtnClean,
-      fontColor: '#000000'
-    },
-    {
-      tipo: 'btnHome',
-      background: '',
-      fontColor: ''
-    },
-  ]);
-
-
-
-
   return (    
-    <div className="App">
+    <BrowserRouter>
       <GlobalStyle/>
-      <Header>
-        <Logo 
-          src={imgLogo}
-          tipo='header'
-        />  
-        <Button
-          onClick={()=>console.log("New Video!")}
-          variant="btnHome"
-          datos={btns}
-        >
-          Nuevo Video
-        </Button>
-
-      </Header>
-      <Banner/>
-      <Footer>
-      <Logo 
-        src={imgLogo}
-        tipo='footer'  
-      />
-      </Footer>
-    </div>
+      <DefaultPage/>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/newvideo' element={<NewVideo/>}/>
+        <Route path='/category' element={<NewCategory/>}/>
+        <Route path='*' element={<Error404/>}/>
+      </Routes>
+      
+    </BrowserRouter>
   );
 }
 
