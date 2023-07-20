@@ -7,7 +7,8 @@ import Footer from "../Footer";
 import { useState } from "react";
 import { colorSecundario,colorbtnClean } from "../Ui/Variables";
 import Icono from "../Icono";
-import {AiFillHome} from 'react-icons/ai'
+import {AiFillHome} from 'react-icons/ai';
+import {Link} from 'react-router-dom';
 
 
 const DefaultPage=()=>{
@@ -35,7 +36,7 @@ const DefaultPage=()=>{
         },
       ]);
 
-      const [site,setSite]=useState('home');
+    const [isHome,setHome]=useState(true);
     
 
     return <>
@@ -44,23 +45,30 @@ const DefaultPage=()=>{
             src={imgLogo}
             tipo='header'
             />  
-            {site==='home'?<Button
-            onClick={()=>console.log("New Video!")}
+            {isHome ?
+            <Button
+            as={Link}
+            to='/newvideo'
+            onClick={()=>setHome(false)}
             variant="btnHome"
             datos={btns}
             >
             Nuevo Video
-            </Button>: 
-            <Icono><AiFillHome/></Icono>          
-            }
-
+            </Button> : 
+              <Icono as={Link} to='/'>
+                <AiFillHome  onClick={()=>setHome(true)}/>
+              </Icono>}
         </Header>
-        {site==='home'&&<Banner/>}
+
+        <body style={{minHeight:'700px'}}>
+            {isHome && <Banner/>}
+        </body>        
+
         <Footer>
-        <Logo 
-            src={imgLogo}
-            tipo='footer'  
-        />
+          <Logo 
+              src={imgLogo}
+              tipo='footer'  
+          />
         </Footer> 
     </>
 };

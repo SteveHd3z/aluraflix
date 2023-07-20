@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colorSecundario } from '../Ui/Variables';
 
-const Icono=styled.i`
+const Icono=styled.a`
     
     cursor: pointer;
     display: flex;
@@ -12,8 +12,11 @@ const Icono=styled.i`
     
     svg{
         height: 40px;
-        width: 40px;
-        
+        width: 40px;        
+    }
+
+    svg:active{
+        color: aquamarine;    
     }
 `;
 

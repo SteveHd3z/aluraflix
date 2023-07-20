@@ -3,6 +3,11 @@ import styled from 'styled-components'
 
 const Button=styled.button`
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
     min-width: 180px;
     height: 54px;
     background-color: ${({variant,datos})=>datos.map(btn=>btn.tipo===variant && btn.background)};
