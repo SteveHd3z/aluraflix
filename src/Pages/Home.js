@@ -1,12 +1,15 @@
+import Banner from "../components/Banner";
+import BannerMain from '../components/BannerMain/BannerMain'
+import "./styles/Home.css";
+
+const Home = () => {
+  return <div className="home">
+            <Banner />
+            <BannerMain/>
 
 
-const Home=()=>{
-    return <div>Este Es el Home!
-        
-        
-        
-        
-         </div>
-}
+
+        </div>
+};
 
 export default Home;

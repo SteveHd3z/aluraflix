@@ -2,13 +2,16 @@ import Header from "../Header";
 import Logo from "../logo";
 import imgLogo from '../../assets/img/LogoMain.png'
 import Button from "../Button";
-import Banner from "../Banner";
 import Footer from "../Footer";
 import { useState } from "react";
 import { colorSecundario,colorbtnClean } from "../Ui/Variables";
 import Icono from "../Icono";
 import {AiFillHome} from 'react-icons/ai';
-import {Link} from 'react-router-dom';
+import { BrowserRouter,Route,Routes,Navigate,Link} from 'react-router-dom';
+import Home from "../../Pages/Home";
+import NewVideo from "../../Pages/NewVideo";
+import NewCategory from '../../Pages/NewCategory';
+import Error404 from '../../Pages/Error404';
 
 
 const DefaultPage=()=>{
@@ -39,7 +42,8 @@ const DefaultPage=()=>{
     const [isHome,setHome]=useState(true);
     
 
-    return <>
+    return <BrowserRouter>  
+
         <Header>
             <Logo 
             src={imgLogo}
@@ -59,18 +63,18 @@ const DefaultPage=()=>{
                 <AiFillHome  onClick={()=>setHome(true)}/>
               </Icono>}
         </Header>
-
-        <body style={{minHeight:'700px'}}>
-            {isHome && <Banner/>}
-        </body>        
+      
+        <Routes>
+             <Route path='/' element={<Home/>}/>
+             <Route path='/newvideo' element={<NewVideo/>}/>
+             <Route path='/category' element={<NewCategory/>}/>
+             <Route path='*' element={<Error404/>}/>
+        </Routes>
 
         <Footer>
-          <Logo 
-              src={imgLogo}
-              tipo='footer'  
-          />
+          <Logo src={imgLogo}/>
         </Footer> 
-    </>
+    </BrowserRouter>
 };
 
 export default DefaultPage;

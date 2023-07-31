@@ -9,4 +9,4 @@ const Banner=styled.div`
     height: 700px;
 `;
 
-export default Banner
+export default Banner;

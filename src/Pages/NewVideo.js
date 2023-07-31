@@ -1,5 +1,5 @@
 const NewVideo=()=>{
-    return <div>Nuevo Video</div>
+    return <h1>Nuevo Video</h1>
 };
 
 export default NewVideo;

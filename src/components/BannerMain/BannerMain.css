@@ -1,0 +1,39 @@
+.banner_main{
+    position: absolute;
+    width: 1360px;
+    height: 333px;
+    top: 357px;
+    left: 28px;
+    border-radius: 4px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info_main{
+    display: flex;
+    flex-direction: column;
+    width: 664px;
+    color: rgba(245, 245, 245, 1);
+}
+
+.subtitle{
+    font-family: Roboto;
+    font-size: 46px;
+    font-weight: 400;
+    line-height: 54px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.info_general{
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 661px;
+    height: 110px;
+}
