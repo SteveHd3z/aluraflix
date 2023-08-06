@@ -5,7 +5,7 @@ import VideoCard from '../VideoCard/VideoCard';
 const BannerMain=()=>{
     return <div className='banner_main'>
             <div className='info_main'>
-                <BtnTitle>FrontEnd</BtnTitle>
+                <BtnTitle>Front End</BtnTitle>
                 <h2 className='subtitle'>Challenge React</h2>
                 <p className='info_general'>Este challenge es una forma de aprendizaje. 
                     Es un mecanismo donde podrás comprometerte 

@@ -3,15 +3,16 @@ import DefaultPage from './components/DefaultPage/index'
 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { DataProvider } from './components/DataProvider';
 
 
 function App() {
 
   return (  
-    <>
-    <GlobalStyle/>
-    <DefaultPage/>    
-    </> 
+    <DataProvider>
+      <GlobalStyle/>
+      <DefaultPage/>    
+    </DataProvider> 
   );
 }
 
