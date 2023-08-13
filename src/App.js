@@ -10,8 +10,8 @@ function App() {
 
   return (  
     <DataProvider>
-      <GlobalStyle/>
-      <DefaultPage/>    
+        <GlobalStyle/>
+        <DefaultPage/>    
     </DataProvider> 
   );
 }

@@ -1,0 +1,16 @@
+.title_Container{
+    display: flex;
+    align-items: baseline;
+    margin-left: 28px;
+}
+
+p{
+    color: #F5F5F5;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 21px;
+    letter-spacing: 0em;
+
+}
+

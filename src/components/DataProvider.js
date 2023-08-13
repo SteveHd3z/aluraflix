@@ -10,7 +10,7 @@ export const DataProvider=({children})=>{
         {
           titulo:"Que significa pensar como programador",
           link:"https://www.youtube.com/watch?v=ov7vA5HFe6w",
-          imagen:"https://i.ytimg.com/an_webp/ov7vA5HFe6w/mqdefault_6s.webp?du=3000&sqp=CMDEpKYG&rs=AOn4CLBcGJAOiZMojHEOMy1Xg4AJEKlSyQ",
+          imagen:"https://i.ytimg.com/vi/ov7vA5HFe6w/maxresdefault.jpg",
           categoria:"Front End",
           descripcion:"Principales características de un programador, habilidades y competencias",
           codigo:"2023f"
@@ -18,7 +18,7 @@ export const DataProvider=({children})=>{
         {
           titulo:"Cuando usar let,var y const",
           link:"https://www.youtube.com/watch?v=PztCEdIJITY&t=9s",
-          imagen:"https://i.ytimg.com/an_webp/PztCEdIJITY/mqdefault_6s.webp?du=3000&sqp=CLqlpKYG&rs=AOn4CLBaJByJQVKIrIXIx848RMibMDC9Fw",
+          imagen:"https://i.ytimg.com/vi/PztCEdIJITY/maxresdefault.jpg",
           categoria:"Front End",
           descripcion:"Aclarando dudas acerca de la declaracion de variables",
           codigo:"2023f"
@@ -26,7 +26,7 @@ export const DataProvider=({children})=>{
         {
           titulo:"Spring Framework",
           link:"https://www.youtube.com/watch?v=t-iqt1b2qqk",
-          imagen:"https://i.ytimg.com/an_webp/t-iqt1b2qqk/mqdefault_6s.webp?du=3000&sqp=CJ2HpKYG&rs=AOn4CLCF5bcYAMqgNWGTLEfn5bFJxmDDHQ",
+          imagen:"https://i.ytimg.com/vi/t-iqt1b2qqk/mqdefault.jpg",
           categoria:"Back End",
           descripcion:"Herramienta java para crear proyectos mas avanzados",
           codigo:"2023b"
@@ -34,8 +34,8 @@ export const DataProvider=({children})=>{
         {
           titulo:"Que son las Soft Skills",
           link:"https://www.youtube.com/watch?v=vhwspfvI52k",
-          imagen:"https://i.ytimg.com/an_webp/vhwspfvI52k/mqdefault_6s.webp?du=3000&sqp=CLXFpKYG&rs=AOn4CLBl3LjldRg5dsMP_DKNH4ig8jHtKg",
-          categoria:"Innovación y Gestion",
+          imagen:"https://i.ytimg.com/vi/vhwspfvI52k/maxresdefault.jpg",
+          categoria:"Innovación y Gestión",
           descripcion:"Importancia de desarrollarlas para posicionarse en el mercado laboral",
           codigo:"2023i"
         }
@@ -44,19 +44,19 @@ export const DataProvider=({children})=>{
         {
           nombre:"Front End",
           descripcion:"parte del desarrollo web que se dedica a la parte frontal de un sitio web",
-          color:{colorBtnFront},
+          color:'#6BD1FF',
           codigo:"fe"
         },
         {
           nombre:"Back End",
           descripcion:"Frameworks mas utilizados de parte del servidor",
-          color:{colorBtnBack},
+          color:'#00C86F',
           codigo:"be"
         },
         {
           nombre:"Innovación y Gestión",
           descripcion:"Metodologías necesarias para desarrollar nuestras soft skills",
-          color:{colorBtnGestion},
+          color:'#FE8C2A',
           codigo:"ig"
         }
       ]);
