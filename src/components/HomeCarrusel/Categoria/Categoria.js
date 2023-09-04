@@ -1,7 +1,7 @@
 import BtnTitle from "../../BtnTitle/index";
 import './Categoria.css';
 import { useMyContext } from "../../DataProvider";
-import VideoCard from "../../VideoCard";
+import VideoCard from "../VideoCard";
 
 const Categoria=(props)=>{
 

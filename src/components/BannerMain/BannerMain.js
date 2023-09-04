@@ -1,14 +1,17 @@
 import './BannerMain.css';
 import BtnTitle from '../BtnTitle/index';
 import { useMyContext } from '../DataProvider';
-import VideoCard from '../VideoCard/index';
+import VideoCard from '../HomeCarrusel/VideoCard/index';
+import Carrousel from '../HomeCarrusel/Carrousel/index';
 
 
 const BannerMain=()=>{
 
 const {videos}=useMyContext();
 
-    return <div className='banner_main'>
+    return <div className='banner_Container'>
+    
+        <div className='banner_main'>
             <div className='info_main'>
                 <BtnTitle tipo='banner'>{videos[0].categoria}</BtnTitle>
                 <h2 className='subtitle'>Challenge React</h2>
@@ -18,8 +21,14 @@ const {videos}=useMyContext();
                     todos los conocimientos adquiridos en la formación React.
                 </p>
             </div>
-            <VideoCard imagen={videos[0].imagen}/>
-        </div>    
+            <VideoCard imagen={videos[0].imagen} tipo='banner'/>
+        </div>
+
+       
+        <Carrousel categoria='Front End' videos={videos} />
+               
+        
+        </div>   
 }
 
 export default BannerMain;

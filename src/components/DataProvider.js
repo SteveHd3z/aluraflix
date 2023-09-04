@@ -13,7 +13,8 @@ export const DataProvider=({children})=>{
           imagen:"https://i.ytimg.com/vi/ov7vA5HFe6w/maxresdefault.jpg",
           categoria:"Front End",
           descripcion:"Principales características de un programador, habilidades y competencias",
-          codigo:"2023f"
+          codigo:"2023f",
+          type:'banner'
         },
         {
           titulo:"Cuando usar let,var y const",
@@ -23,6 +24,15 @@ export const DataProvider=({children})=>{
           descripcion:"Aclarando dudas acerca de la declaracion de variables",
           codigo:"2023f"
         },
+        {
+          titulo:"Que es JavaScript",
+          link:"https://www.youtube.com/watch?v=GJfOSoaXk4s&pp=ygUXYWx1cmEgcXVlIGVzIGphdmFTY3JpcHQ%3D",
+          imagen:"https://i.ytimg.com/vi/GJfOSoaXk4s/maxresdefault.jpg",
+          categoria:"Front End",
+          descripcion:"Que es y como se hizo este lenguaje?",
+          codigo:"2023f"
+        },
+
         {
           titulo:"Spring Framework",
           link:"https://www.youtube.com/watch?v=t-iqt1b2qqk",
@@ -36,6 +46,15 @@ export const DataProvider=({children})=>{
           link:"https://www.youtube.com/watch?v=vhwspfvI52k",
           imagen:"https://i.ytimg.com/vi/vhwspfvI52k/maxresdefault.jpg",
           categoria:"Innovación y Gestión",
+          descripcion:"Importancia de desarrollarlas para posicionarse en el mercado laboral",
+          codigo:"2023i"
+        },
+        
+        {
+          titulo:"Prueba",
+          link:"https://www.youtube.com/watch?v=vhwspfvI52k",
+          imagen:"https://i.ytimg.com/vi/vhwspfvI52k/maxresdefault.jpg",
+          categoria:"Front End",
           descripcion:"Importancia de desarrollarlas para posicionarse en el mercado laboral",
           codigo:"2023i"
         }

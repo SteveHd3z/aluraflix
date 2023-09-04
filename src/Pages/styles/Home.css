@@ -1,3 +1,8 @@
 .home{
-    
+    background: linear-gradient(rgba(5,7,12,0.5), rgba(5,7,12,0.5)), 
+    url(../../assets/img/banner.png);
+    background-size: 100% 750px; 
+    background-repeat: no-repeat; 
+    background-color:#0B0B0B;
+     
 }

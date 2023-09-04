@@ -1,14 +1,22 @@
+.banner_Container,
+.banner_main,
+.info_general,
+.info_main,
+.subtitle{
+    background-color: transparent;
+}
 
-.banner_main{
-    position: absolute;
+.banner_Container{ 
+    padding-top: 270px;  
+}
+
+.banner_main{    
     width: 1360px;
     height: 333px;
-    top: 357px;
-    left: 28px;
     border-radius: 4px;
-    background-color: transparent;
     display: flex;
     justify-content: space-between;
+    padding-left: 30px;
 }
 
 .info_main{
@@ -16,7 +24,6 @@
     flex-direction: column;
     width: 664px;
     color: rgba(245, 245, 245, 1);
-    background-color: transparent;
     justify-content: center;
 }
 
@@ -28,7 +35,6 @@
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 15px;
-    background-color: transparent;
 }
 
 .info_general{
@@ -40,5 +46,5 @@
     text-align: left;
     width: 661px;
     height: 110px;
-    background-color: transparent;
 }
+
