@@ -20,7 +20,7 @@ export const DataProvider=({children})=>{
           titulo:"Cuando usar let,var y const",
           link:"https://www.youtube.com/watch?v=PztCEdIJITY&t=9s",
           imagen:"https://i.ytimg.com/vi/PztCEdIJITY/maxresdefault.jpg",
-          categoria:"Front End",
+          categoria:"Back End",
           descripcion:"Aclarando dudas acerca de la declaracion de variables",
           codigo:"2023f"
         },
@@ -28,7 +28,7 @@ export const DataProvider=({children})=>{
           titulo:"Que es JavaScript",
           link:"https://www.youtube.com/watch?v=GJfOSoaXk4s&pp=ygUXYWx1cmEgcXVlIGVzIGphdmFTY3JpcHQ%3D",
           imagen:"https://i.ytimg.com/vi/GJfOSoaXk4s/maxresdefault.jpg",
-          categoria:"Front End",
+          categoria:"Back End",
           descripcion:"Que es y como se hizo este lenguaje?",
           codigo:"2023f"
         },

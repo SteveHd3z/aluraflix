@@ -1,5 +1,4 @@
 import VideoCard from "../VideoCard";
-import React, { Component } from "react";
 import Slider from "react-slick";
 import { useMyContext } from "../../DataProvider";
 import './Carrousel.css';
@@ -22,7 +21,7 @@ const Carrousel=({categoria})=>{
         <h1>{categoria}</h1>
         <Slider {...settings}>
           {videos.map((video)=>video.categoria===categoria &&
-          <VideoCard imagen={video.imagen} tipo='carrousel'/>)}
+          <VideoCard imagen={video.imagen} tipo='carrousel' key={video.codigo}/>)}
         </Slider>
       </div>
     );

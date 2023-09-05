@@ -7,13 +7,16 @@ import Carrousel from '../HomeCarrusel/Carrousel/index';
 
 const BannerMain=()=>{
 
-const {videos}=useMyContext();
+const {videos,categorias}=useMyContext();
+const img=videos[0].imagen;
+const cate=videos[0].categoria;
+const color=categorias.map((categoria)=>categoria.nombre===cate && categoria.color)
 
     return <div className='banner_Container'>
     
         <div className='banner_main'>
             <div className='info_main'>
-                <BtnTitle tipo='banner'>{videos[0].categoria}</BtnTitle>
+                <BtnTitle color={color} tipo='banner' key={cate.codigo}>{cate}</BtnTitle>
                 <h2 className='subtitle'>Challenge React</h2>
                 <p className='info_general'>Este challenge es una forma de aprendizaje. 
                     Es un mecanismo donde podrás comprometerte 
@@ -21,12 +24,10 @@ const {videos}=useMyContext();
                     todos los conocimientos adquiridos en la formación React.
                 </p>
             </div>
-            <VideoCard imagen={videos[0].imagen} tipo='banner'/>
+            <VideoCard imagen={img} tipo='banner'/>
         </div>
-
        
-        <Carrousel categoria='Front End' videos={videos} />
-               
+        <Carrousel categoria={cate} />               
         
         </div>   
 }

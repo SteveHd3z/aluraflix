@@ -3,14 +3,23 @@ import "./styles/Home.css";
 import {useMyContext } from "../components/DataProvider";
 import VideoCard from "../components/HomeCarrusel/VideoCard/index"
 import Categoria from "../components/HomeCarrusel/Categoria/Categoria";
+import Carrousel from '../components/HomeCarrusel/Carrousel';
 
 const Home = () => {
 
-  const {categorias}=useMyContext();
+  const {categorias, videos}=useMyContext();
+  const cate=videos[0].categoria;
 
   return <div className="home">    
             
-            <BannerMain/>         
+            <BannerMain/> 
+            {categorias.map((categoria)=>
+              categoria.nombre !== cate &&
+              <Carrousel
+                key={categoria.codigo}
+                categoria={categoria.nombre}
+              />
+            )}        
             
 
             
