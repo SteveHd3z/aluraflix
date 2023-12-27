@@ -13,11 +13,14 @@ const Home = () => {
   return <div className="home">    
             
             <BannerMain/> 
+
             {categorias.map((categoria)=>
               categoria.nombre !== cate &&
               <Carrousel
                 key={categoria.codigo}
                 categoria={categoria.nombre}
+                color={categoria.color}
+                descripcion={categoria.descripcion}
               />
             )}        
             

@@ -52,10 +52,10 @@ export const DataProvider=({children})=>{
         
         {
           titulo:"Prueba",
-          link:"https://www.youtube.com/watch?v=vhwspfvI52k",
-          imagen:"https://i.ytimg.com/vi/vhwspfvI52k/maxresdefault.jpg",
-          categoria:"Front End",
-          descripcion:"Importancia de desarrollarlas para posicionarse en el mercado laboral",
+          link:"https://youtu.be/-LmFK6skG7s",
+          imagen:"https://i.ytimg.com/vi/-LmFK6skG7s/maxresdefault.jpg",
+          categoria:"Git y GitHub Prueba",
+          descripcion:"Importancia de aplicar nuevos conocimientos en control de versiones",
           codigo:"2023i"
         }
       ]);
@@ -77,9 +77,15 @@ export const DataProvider=({children})=>{
           descripcion:"Metodologías necesarias para desarrollar nuestras soft skills",
           color:'#FE8C2A',
           codigo:"ig"
+        },
+        {
+          nombre:"Git y GitHub Prueba",
+          descripcion:"Controlador de versiones para cada uno de los proyectos",
+          color:'#4C4444',
+          codigo:"ig"
         }
       ]);
-      const dato='Hola soy un dato';
+      
 
 
     return (

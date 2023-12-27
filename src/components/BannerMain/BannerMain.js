@@ -24,10 +24,10 @@ const color=categorias.map((categoria)=>categoria.nombre===cate && categoria.col
                     todos los conocimientos adquiridos en la formación React.
                 </p>
             </div>
-            <VideoCard imagen={img} tipo='banner'/>
+            <VideoCard imagen={img} tipo='banner' color={color}/>
         </div>
        
-        <Carrousel categoria={cate} />               
+        <Carrousel categoria={cate} color={color}/>             
         
         </div>   
 }

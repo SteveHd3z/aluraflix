@@ -1,9 +1,15 @@
 .container_Carrousel{
-    padding: 80px 0px 30px 40px;
+    padding: 20px 0px 30px 40px;
     background: transparent;    
 }
 
 h1{
     background: transparent;
     color: white;
+}
+
+.encabezado{
+    display: flex;
+    align-items: baseline;
+    
 }

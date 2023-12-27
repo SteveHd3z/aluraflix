@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const VideoCard=(props)=>{
     return <>
-        <Card imagen={props.imagen} tipo={props.tipo}/>
+        <Card imagen={props.imagen} tipo={props.tipo} href={props.link} color={props.color}/>
     </>
 };
 
@@ -15,10 +15,9 @@ const Card=styled.a`
     
     background-image:url(${(props)=>props.imagen});
     cursor: pointer;
-    background-size:100%;
+    background-size: cover;
     background-repeat: no-repeat;
+    border: 4px solid ${(props)=>props.color};
 `;
-
-
 
 export default VideoCard;
