@@ -1,0 +1,25 @@
+::root{
+    --colorPrimary:#000000E5;
+    --colorSecundary: 
+}
+
+.form{    
+    width: 1360px;
+}
+.tituloForm{
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 70px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #F5F5F5;
+    margin: 45px auto;
+}
+
+.input{
+    background: #53585D;
+    color: #E5E5E5; 
+    border-bottom-color: 'white'; 
+    width: 100%;
+      
+}

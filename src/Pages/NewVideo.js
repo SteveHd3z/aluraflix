@@ -1,5 +1,13 @@
+import Formulario from "../components/Formulario";
+import './styles/NewVideo.css';
+
+
+
 const NewVideo=()=>{
-    return <h1>Nuevo Video</h1>
+    return <section className="formulario">
+        <Formulario />
+    </section>
+
 };
 
 export default NewVideo;

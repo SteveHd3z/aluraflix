@@ -25,8 +25,7 @@ const Carrousel=({categoria,color,descripcion})=>{
           {categoria !== 'Front End' && <BtnTitle color={color} tipo='categoria'>{categoria}</BtnTitle>}
           <Text>{descripcion}</Text>
         </div>
-
-        {console.log('Color Categoría: ', color)}
+        
 
         <Slider {...settings}>
           {videos.map((video)=>video.categoria===categoria &&
