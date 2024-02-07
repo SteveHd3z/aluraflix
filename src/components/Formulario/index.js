@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect,useCallback } from "react";
 import './Formulario.css';
 import CampoForm from "./TextField";
 
@@ -13,28 +13,40 @@ const Formulario=()=>{
     const [categoria,setCategoría]=useState("")
     const [descripcion,setDescripcion]=useState("")
     const [codigo,setCodigo]=useState("")
-
-    const [inputValue,setInputValue]=useState("")
     const [error, setError]=useState(false);
 
-    const handleInputTitle = (e) => {        
-        
-        const value = e.target.value;
-        console.log(value)    
-        // Validación: Comprueba si el campo esta vacío
+  // Validación de campos 
+  
+  const validarCampo = useCallback(() => {
+    setError(titulo.trim() === '');
+  }, [titulo]);  
+    
 
-        value.trim()===0 && setError(true);
+    // Manejadores de eventos onBlur
+    const handleBlur = () => {
+        console.log("Se perdio el foco, valor en blur: ");
+        validarCampo();
+    };
+
+
+    const handleInputTitle = (e) => { 
+        console.log('Ingreso al handle Change') 
+        const value = e.target.value;
         setTitulo(value);
+        validarCampo();        
       };
+
+    
+
+      
 
     const tipoInputs=[
         {
             id:'title',
             label:'Titulo',
             value:titulo,
-            onChange:handleInputTitle,
-            error:error,
-            errorText:'Debe ingresar un campo numerico',
+            handleChange:handleInputTitle,
+            errorText:'Ingrese el Titulo',
             type:'text'  
         }
     ];
@@ -43,7 +55,7 @@ const Formulario=()=>{
 
     //Manejar el envio de la informacion en SPA (Single Page Aplication)-No recargar pag
 
-    const manejarEnvio=(e)=>{
+    const handleData=(e)=>{
         e.preventDefault();
         let datosEnvio={
             titulo,
@@ -55,33 +67,29 @@ const Formulario=()=>{
         }  
         //registrarVideo(datosEnvio)     
     }
-
-    /*const handleInputChange = (e) => {        
-        
-        const value = e.target.value;
-        console.log(value)    
-        // Validación: Comprueba si el valor es numérico
-        setError(isNaN(value)); //Devuelve true si no es un numero   
-        setInputValue(value);
-      };*/
-
+    
    
 
     return <section className="form">
 
-        <form onSubmit={manejarEnvio}>
+        <form onSubmit={handleData}>
             <h2 className="tituloForm">Nuevo Video</h2>  
                
-                 <CampoForm
-                    id='number'
-                    label='Ingrese un Número'
-                    variant='standard'
-                    value={inputValue}
-                    onChange={handleInputTitle}
-                    error={error}
-                    errorText={'Debe ingresar un campo numerico'}
-                    type='text'
-                 /> 
+                 
+                 {tipoInputs.map((input)=>{
+                    return <CampoForm
+                        id={input.id}
+                        label={input.label}
+                        variant='standard'
+                        value={input.value}
+                        handleChange={input.handleChange}
+                        handleBlur={handleBlur}               
+                        error={error}
+                        errorText={input.errorText}
+                        type={input.type}
+                    />
+                 })}
+                  
 
         
         </form>

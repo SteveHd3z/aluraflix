@@ -3,14 +3,15 @@ import { backgroundBody, colorTextoInput } from "../Ui/Variables";
 
 const CampoForm=(props)=>{
 
-  const {id,label,variant,value,onChange,error,errorText,type}=props;
+  const {id,label,variant,value,handleChange,handleBlur,error,errorText,type}=props;
   
   return <TextField  
               id={id}
               label={label}
               variant={variant}
               value={value}
-              onChange={onChange}
+              onChange={handleChange}
+              onBlur={handleBlur}
               error={error }
               helperText={error && errorText}
               type={type} // Cambia el tipo a "text" para permitir entrada de texto y números
@@ -39,12 +40,19 @@ const CampoForm=(props)=>{
                   },
                   //Luego de selecionar el campo input:
                   '& .css-1eed5fa-MuiInputBase-root-MuiInput-root::after': {
-                      borderBottom: '4px solid #2A7AE4',
-                      color: 'white'
+                      borderBottom: '4px solid #2A7AE4'                                          
                   },
-                  //Cambios en el input luego de presentarse el error:
-                  '& .css-1eed5fa-MuiInputBase-root-MuiInput-root.Mui-error::after':{
-                      borderBottom: '4px solid #E53935 '
+                  //Label al seleccionar el campo
+                  '& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+                    color: '#C2C2C2'                      
+                },
+                  //Cambios en el input al presentarse el error:
+                  '& .css-1eed5fa-MuiInputBase-root-MuiInput-root.Mui-error::before, .css-1eed5fa-MuiInputBase-root-MuiInput-root.Mui-error::after':{
+                      borderBottom: '4px solid #E53935 ',
+                  },
+                  //label al presentarse el error y quitar el foco:
+                  '& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root.Mui-error': {
+                    color: '#C2C2C2'
                   },
                   //Estilos para campo y leyenda del error:
                   '& .css-1d1r5q-MuiFormHelperText-root.Mui-error': {
@@ -54,6 +62,10 @@ const CampoForm=(props)=>{
                   }                      
               }}
             />
+
+           
 }
 
 export default CampoForm;
+
+
