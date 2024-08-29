@@ -4,6 +4,8 @@ import { colorBtnFront,colorBtnBack,colorBtnGestion } from "./Ui/Variables";
 export const dataContext=React.createContext();
 export const useMyContext = () => useContext(dataContext);
 
+//Ya que necesitamos contar con los videos y categorías en toda la aplicación usamos el hook dataContext
+
 export const DataProvider=({children})=>{
 
     const [videos,setVideos]=useState([
@@ -51,10 +53,10 @@ export const DataProvider=({children})=>{
         },
         
         {
-          titulo:"Prueba",
+          titulo:"Git y GitHub para Principiantes",
           link:"https://youtu.be/-LmFK6skG7s",
           imagen:"https://i.ytimg.com/vi/-LmFK6skG7s/maxresdefault.jpg",
-          categoria:"Git y GitHub Prueba",
+          categoria:"Git y GitHub",
           descripcion:"Importancia de aplicar nuevos conocimientos en control de versiones",
           codigo:"2023i"
         }
@@ -79,7 +81,7 @@ export const DataProvider=({children})=>{
           codigo:"ig"
         },
         {
-          nombre:"Git y GitHub Prueba",
+          nombre:"Git y GitHub",
           descripcion:"Controlador de versiones para cada uno de los proyectos",
           color:'#4C4444',
           codigo:"ig"

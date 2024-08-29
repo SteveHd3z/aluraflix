@@ -48,7 +48,7 @@ const CampoForm=(props)=>{
                 },
                   //Cambios en el input al presentarse el error:
                   '& .css-1eed5fa-MuiInputBase-root-MuiInput-root.Mui-error::before, .css-1eed5fa-MuiInputBase-root-MuiInput-root.Mui-error::after':{
-                      borderBottom: '4px solid #E53935 ',
+                      borderBottom: '4px solid #E53935 '
                   },
                   //label al presentarse el error y quitar el foco:
                   '& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root.Mui-error': {

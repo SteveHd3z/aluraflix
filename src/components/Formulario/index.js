@@ -17,15 +17,13 @@ const Formulario=()=>{
 
   // Validación de campos 
   
-  const validarCampo = useCallback(() => {
+  const validarCampo = useCallback(() => {      //Solo cambia cuando las dependencias cambian 
     setError(titulo.trim() === '');
-    console.log("Validó: ");
   }, [titulo]);  
     
 
-    // Manejadores de eventos onBlur
+    // Manejadores de eventos onBlur, validamos el campo  cuando se pierde el foco en el elemento
     const handleBlur = () => {
-        console.log("Se perdio el foco, valor en blur: ");
         validarCampo();
     };   
       
@@ -36,7 +34,7 @@ const Formulario=()=>{
             label:'Titulo',
             value:titulo,
             setData:setTitulo,
-            errorText:'Ingrese el Titulo',
+            errorText:'Ingrese el titulo',
             type:'text'  
         },
         {
@@ -44,7 +42,39 @@ const Formulario=()=>{
             label:'Link del Video',
             value:link,
             setData:setLink,
-            errorText:'Ingrese el Link del Video',
+            errorText:'Ingrese el link del video',
+            type:'text'
+        },
+        {
+            id:'image',
+            label:'Link imágen del video',
+            value:imagen,
+            setData:setImagen,
+            errorText: 'Link es obligatorio', 
+            type:'text'
+        },
+        {
+            id:'category',
+            label:'Escoja una categoría',
+            value:categoria,
+            setData:setCategoría,
+            errorText: 'Categoría es obligatoria', 
+            type:'select'
+        },
+        {
+            id:'description',
+            label:'Descripción',
+            value:descripcion,
+            setData:setDescripcion,
+            errorText: 'Ingrese la descripción', 
+            type:'text-area'
+        },
+        {
+            id:'code',
+            label:'Código de seguridad',
+            value:codigo,
+            setData:setCodigo,
+            errorText: 'Ingrese el código', 
             type:'text'
         }
     ];
@@ -75,17 +105,20 @@ const Formulario=()=>{
                
                  
                  {tipoInputs.map((input)=>{
-                    return <CampoForm
-                        id={input.id}
-                        label={input.label}
-                        variant='standard'
-                        value={input.value}
-                        setValue={input.setData}
-                        handleBlur={handleBlur}               
-                        error={error}
-                        errorText={input.errorText}
-                        type={input.type}
-                    />
+                    return <div className="campo">
+                        <CampoForm
+                            id={input.id}
+                            label={input.label}
+                            variant='standard'
+                            value={input.value}
+                            setValue={input.setData}
+                            handleBlur={handleBlur}               
+                            error={error}
+                            errorText={input.errorText}
+                            type={input.type}
+                        />
+                    </div>
+                        
                  })}
                   
 
