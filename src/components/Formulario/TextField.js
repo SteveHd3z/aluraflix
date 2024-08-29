@@ -3,14 +3,14 @@ import { backgroundBody, colorTextoInput } from "../Ui/Variables";
 
 const CampoForm=(props)=>{
 
-  const {id,label,variant,value,handleChange,handleBlur,error,errorText,type}=props;
+  const {id,label,variant,value,setValue,handleBlur,error,errorText,type}=props;
   
   return <TextField  
               id={id}
               label={label}
               variant={variant}
               value={value}
-              onChange={handleChange}
+              onChange={(e) => setValue(e.target.value)}
               onBlur={handleBlur}
               error={error }
               helperText={error && errorText}

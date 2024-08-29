@@ -12,13 +12,14 @@ const Formulario=()=>{
     const [imagen,setImagen]=useState("")
     const [categoria,setCategoría]=useState("")
     const [descripcion,setDescripcion]=useState("")
-    const [codigo,setCodigo]=useState("")
+    const [codigo,setCodigo]=useState("")    
     const [error, setError]=useState(false);
 
   // Validación de campos 
   
   const validarCampo = useCallback(() => {
     setError(titulo.trim() === '');
+    console.log("Validó: ");
   }, [titulo]);  
     
 
@@ -26,18 +27,7 @@ const Formulario=()=>{
     const handleBlur = () => {
         console.log("Se perdio el foco, valor en blur: ");
         validarCampo();
-    };
-
-
-    const handleInputTitle = (e) => { 
-        console.log('Ingreso al handle Change') 
-        const value = e.target.value;
-        setTitulo(value);
-        validarCampo();        
-      };
-
-    
-
+    };   
       
 
     const tipoInputs=[
@@ -45,9 +35,17 @@ const Formulario=()=>{
             id:'title',
             label:'Titulo',
             value:titulo,
-            handleChange:handleInputTitle,
+            setData:setTitulo,
             errorText:'Ingrese el Titulo',
             type:'text'  
+        },
+        {
+            id:'link',
+            label:'Link del Video',
+            value:link,
+            setData:setLink,
+            errorText:'Ingrese el Link del Video',
+            type:'text'
         }
     ];
 
@@ -55,7 +53,7 @@ const Formulario=()=>{
 
     //Manejar el envio de la informacion en SPA (Single Page Aplication)-No recargar pag
 
-    const handleData=(e)=>{
+    const handleSubmit=(e)=>{
         e.preventDefault();
         let datosEnvio={
             titulo,
@@ -72,7 +70,7 @@ const Formulario=()=>{
 
     return <section className="form">
 
-        <form onSubmit={handleData}>
+        <form onSubmit={handleSubmit}>
             <h2 className="tituloForm">Nuevo Video</h2>  
                
                  
@@ -82,7 +80,7 @@ const Formulario=()=>{
                         label={input.label}
                         variant='standard'
                         value={input.value}
-                        handleChange={input.handleChange}
+                        setValue={input.setData}
                         handleBlur={handleBlur}               
                         error={error}
                         errorText={input.errorText}
