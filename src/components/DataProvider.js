@@ -84,7 +84,7 @@ export const DataProvider=({children})=>{
           nombre:"Git y GitHub",
           descripcion:"Controlador de versiones para cada uno de los proyectos",
           color:'#4C4444',
-          codigo:"ig"
+          codigo:"gyg"
         }
       ]);
       
