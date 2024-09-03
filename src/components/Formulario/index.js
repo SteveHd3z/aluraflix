@@ -1,6 +1,8 @@
 import { useState, useCallback } from "react";
 import './Formulario.css';
 import CampoForm from "./TextField";
+import Button from "../Button";
+import { useMyContext } from "../DataProvider";
 
 const Formulario = () => {
 
@@ -11,8 +13,6 @@ const Formulario = () => {
     const [descripcion, setDescripcion] = useState("");
     const [codigo, setCodigo] = useState("");
 
-    const [submitted, setSubmitted] = useState(false);
-
     const [errors, setErrors] = useState({
         titulo: false,
         link: false,
@@ -21,8 +21,7 @@ const Formulario = () => {
         descripcion: false,
         codigo: false
     });
-
-    const [touched, setTouched] = useState({
+    const [touched, setTouched] = useState({        //para manejo de envío y validación
         titulo: false,
         link: false,
         imagen: false,
@@ -30,6 +29,7 @@ const Formulario = () => {
         descripcion: false,
         codigo: false
     });
+    const {btns,setVideos}=useMyContext()
 
     // Validación de campos
     const validarCampo = useCallback((id, valor) => {
@@ -54,7 +54,7 @@ const Formulario = () => {
             label: 'Titulo',
             value: titulo,
             setData: setTitulo,
-            error: errors.titulo && touched.titulo,
+            error: errors.titulo && touched.titulo, //Validación: Si tiene errores y ha sido tocado o perdido el foco
             errorText: 'Ingrese el titulo',
             type: 'text'
         },
@@ -108,12 +108,7 @@ const Formulario = () => {
     // Manejar el envio de la informacion en SPA (Single Page Aplication)-No recargar pagina
     const handleSubmit = (e) => {
         e.preventDefault();
-        /*setSubmitted(true);  // Marca que se ha intentado enviar el formulario
-        
-        // Llama a las validaciones aquí
-        tipoInputs.forEach(input => validarCampo(input.id, input.value));
-      
-        // Verifica que todos los campos sean válidos antes de enviar los datos
+
         if (Object.values(errors).every(error => !error)) {
           const datosEnvio = {
             titulo,
@@ -123,8 +118,11 @@ const Formulario = () => {
             descripcion,
             codigo,
           };
-          // registrarVideo(datosEnvio);
-        }*/
+            
+          setVideos((prevVideos) => [...prevVideos, datosEnvio]);
+          //console.log(datosEnvio)
+          
+        }
     };
       
     return (
@@ -146,6 +144,40 @@ const Formulario = () => {
                         />
                     </div>
                 ))}
+
+        <section className="buttonSection">
+
+            <div className="btnsForm">
+                <Button
+                    onClick={handleSubmit}
+                    variant="btnSave"
+                    datos={btns}
+                    >
+                    Guardar
+                </Button>
+                <Button
+                    onClick={handleSubmit}
+                    variant="btnClean"
+                    datos={btns}
+                    >
+                    Limpiar
+                </Button>
+            </div>
+            
+            <Button
+                onClick={handleSubmit}
+                variant="btnNewCategory"
+                datos={btns}
+                >
+                Nueva Categoría
+            </Button>
+
+
+        </section>
+
+            
+
+
             </form>
         </section>
     );

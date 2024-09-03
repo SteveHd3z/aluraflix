@@ -7,37 +7,17 @@ import { useState } from "react";
 import { colorSecundario,colorbtnClean,colorBtnFront,colorBtnBack,colorBtnGestion } from "../Ui/Variables";
 import Icono from "../Icono";
 import {AiFillHome} from 'react-icons/ai';
-import { BrowserRouter,Route,Routes,Navigate,Link} from 'react-router-dom';
+import { BrowserRouter,Route,Routes,Link} from 'react-router-dom';
 import Home from "../../Pages/Home";
 import NewVideo from "../../Pages/NewVideo";
 import NewCategory from '../../Pages/NewCategory';
 import Error404 from '../../Pages/Error404';
+import { useMyContext } from "../DataProvider";
 
 
 const DefaultPage=()=>{
 
-    const [btns, setBtn]=useState([
-        {
-          tipo: 'btnNew',
-          background: '#000000',
-          fontColor: '#ffffff'
-        },
-        {
-          tipo: 'btnSave',
-          background: colorSecundario,
-          fontColor: '#ffffff'
-        },
-        {
-          tipo: 'btnClean',
-          background: colorbtnClean,
-          fontColor: '#000000'
-        },
-        {
-          tipo: 'btnHome',
-          background: '',
-          fontColor: ''
-        },
-      ]);
+    const {btns}=useMyContext()
     const [isHome,setHome]=useState(true);   
     
 
@@ -53,7 +33,7 @@ const DefaultPage=()=>{
             as={Link}
             to='/newvideo'
             onClick={()=>setHome(false)}
-            variant="btnHome"
+            variant="btnNew"
             datos={btns}
             >
             Nuevo Video

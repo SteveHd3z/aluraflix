@@ -1,5 +1,5 @@
 import React, {useState,useContext} from "react";
-import { colorBtnFront,colorBtnBack,colorBtnGestion } from "./Ui/Variables";
+import { colorSecundario,colorbtnClean } from "./Ui/Variables";
 
 export const dataContext=React.createContext();
 export const useMyContext = () => useContext(dataContext);
@@ -7,6 +7,29 @@ export const useMyContext = () => useContext(dataContext);
 //Ya que necesitamos contar con los videos y categorías en toda la aplicación usamos el hook dataContext
 
 export const DataProvider=({children})=>{
+
+  const [btns, setBtn]=useState([
+      {
+        tipo: 'btnNew',
+        background: '#000000',
+        fontColor: '#ffffff'
+      },
+      {
+        tipo: 'btnSave',
+        background: colorSecundario,
+        fontColor: '#ffffff'
+      },
+      {
+        tipo: 'btnClean',
+        background: colorbtnClean,
+        fontColor:  '#000000E5',
+      },
+      {
+        tipo: 'btnNewCategory',
+        background: colorSecundario,
+        fontColor: '#ffffff'
+      }
+    ]);
 
     const [videos,setVideos]=useState([
         {
@@ -16,7 +39,6 @@ export const DataProvider=({children})=>{
           categoria:"Front End",
           descripcion:"Principales características de un programador, habilidades y competencias",
           codigo:"2023f",
-          type:'banner'
         },
         {
           titulo:"Cuando usar let,var y const",
@@ -92,9 +114,9 @@ export const DataProvider=({children})=>{
 
     return (
         <dataContext.Provider            
-            value={{videos,setVideos,categorias,setCategorias}}
-            >
-                {children}
+          value={{videos,setVideos,categorias,setCategorias,btns,setBtn}}
+        >
+          {children}
         </dataContext.Provider>
 
     );

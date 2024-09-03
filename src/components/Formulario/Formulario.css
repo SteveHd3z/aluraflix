@@ -27,3 +27,16 @@
 .campo{
     margin: 25px 0;
 }
+
+.buttonSection{
+    display: flex;
+    justify-content: space-between;
+    margin:  30px 0 150px 10px ;
+}
+
+.btnsForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 400px;
+}

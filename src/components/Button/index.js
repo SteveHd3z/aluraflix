@@ -11,7 +11,7 @@ const Button=styled.button`
     min-width: 180px;
     height: 54px;
     background-color: ${({variant,datos})=>datos.map(btn=>btn.tipo===variant && btn.background)};
-    border: 1px solid  ${(props)=>props.variant === 'newVideo' && '#ffffff'};
+    border: ${({variant}) => variant === 'btnNew' ? '1px solid #ffffff;' : 'none'};
 
     font-family: Source Sans Pro;
     font-size: 21px;
@@ -20,7 +20,7 @@ const Button=styled.button`
     text-align: center;
 
     border-radius: 4px;
-    color: ${(props)=>props.variant === 'btnClean' ? '#000000E5' : '#ffffff' };
+    color: ${({variant}) => variant === 'btnClean' ? '#000000E5' : '#ffffff'};
 
     &:hover{
         cursor: pointer;

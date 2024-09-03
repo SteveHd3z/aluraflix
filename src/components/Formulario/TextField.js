@@ -5,7 +5,7 @@ import { useMyContext } from "../DataProvider";
 const CampoForm = (props) => {
 
     const { id, label, variant, value, setValue, handleBlur, error, errorText, type } = props;
-    const {categorias}=useMyContext()
+    const {categorias,setVideos}=useMyContext()
 
     const commonStyles = {
       m: 1,
@@ -127,7 +127,7 @@ const CampoForm = (props) => {
                 sx={selectStyles}
               >
                 {categorias.map((categoria) => (
-                  <MenuItem sx={menuItemStyles} key={categoria.codigo} value={categoria.codigo}>
+                  <MenuItem sx={menuItemStyles} key={categoria.codigo} value={categoria.nombre}>
                     {categoria.nombre}
                   </MenuItem> ))}
 
