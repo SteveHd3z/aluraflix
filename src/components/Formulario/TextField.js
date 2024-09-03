@@ -6,9 +6,6 @@ const CampoForm = (props) => {
 
     const { id, label, variant, value, setValue, handleBlur, error, errorText, type } = props;
     const {categorias}=useMyContext()
-    categorias.map((categoria)=>{
-      console.log('Cate: ',categoria.codigo)
-    })
 
     const commonStyles = {
       m: 1,
@@ -69,9 +66,7 @@ const CampoForm = (props) => {
         lineHeight: '41px',
         color: '#C2C2C2',
       },
-    };
-    
-    
+    }; 
 
     // Estilos específicos para Select
     const selectStyles = {
@@ -105,7 +100,7 @@ const CampoForm = (props) => {
               variant={variant}
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              onBlur={handleBlur}
+              onBlur={(e) =>handleBlur(id, e.target.value)}
               error={error}
               helperText={error && errorText}
               sx={commonStyles}
@@ -126,7 +121,7 @@ const CampoForm = (props) => {
                 variant={variant}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                onBlur={handleBlur}
+                onBlur={(e) =>handleBlur(id, e.target.value)}
                 error={error}
                 helperText={error && errorText}
                 sx={selectStyles}
@@ -152,7 +147,7 @@ const CampoForm = (props) => {
                 variant={variant}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                onBlur={handleBlur}
+                onBlur={(e) =>handleBlur(id, e.target.value)}
                 error={error}
                 helperText={error && errorText}
                 sx={commonStyles}

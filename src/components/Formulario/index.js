@@ -1,111 +1,138 @@
-import { useState,useEffect,useCallback } from "react";
+import { useState, useCallback } from "react";
 import './Formulario.css';
 import CampoForm from "./TextField";
 
+const Formulario = () => {
 
+    const [titulo, setTitulo] = useState("");
+    const [link, setLink] = useState("");
+    const [imagen, setImagen] = useState("");
+    const [categoria, setCategoria] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+    const [codigo, setCodigo] = useState("");
 
-const Formulario=()=>{
+    const [submitted, setSubmitted] = useState(false);
 
+    const [errors, setErrors] = useState({
+        titulo: false,
+        link: false,
+        imagen: false,
+        categoria: false,
+        descripcion: false,
+        codigo: false
+    });
 
-    const [titulo,setTitulo]=useState("")
-    const [link,setLink]=useState("")
-    const [imagen,setImagen]=useState("")
-    const [categoria,setCategoría]=useState("")
-    const [descripcion,setDescripcion]=useState("")
-    const [codigo,setCodigo]=useState("")    
-    const [error, setError]=useState(false);
+    const [touched, setTouched] = useState({
+        titulo: false,
+        link: false,
+        imagen: false,
+        categoria: false,
+        descripcion: false,
+        codigo: false
+    });
 
-  // Validación de campos 
-  
-  const validarCampo = useCallback(() => {      //Solo cambia cuando las dependencias cambian 
-    setError(titulo.trim() === '');
-  }, [titulo]);  
+    // Validación de campos
+    const validarCampo = useCallback((id, valor) => {
+        setErrors((prevErrors) => ({
+            ...prevErrors,                  //Spread Operator
+            [id]: valor.trim() === ''
+        }));
+    }, []);
+    
+    const handleBlur = (id, valor) => {
+        setTouched((prevTouched) => ({
+            ...prevTouched,
+            [id]: true
+        }));
+        validarCampo(id, valor);
+    };
     
 
-    // Manejadores de eventos onBlur, validamos el campo  cuando se pierde el foco en el elemento
-    const handleBlur = () => {
-        validarCampo();
-    };   
-      
-
-    const tipoInputs=[
+    const tipoInputs = [
         {
-            id:'title',
-            label:'Titulo',
-            value:titulo,
-            setData:setTitulo,
-            errorText:'Ingrese el titulo',
-            type:'text'  
+            id: 'titulo',
+            label: 'Titulo',
+            value: titulo,
+            setData: setTitulo,
+            error: errors.titulo && touched.titulo,
+            errorText: 'Ingrese el titulo',
+            type: 'text'
         },
         {
-            id:'link',
-            label:'Link del Video',
-            value:link,
-            setData:setLink,
-            errorText:'Ingrese el link del video',
-            type:'text'
+            id: 'link',
+            label: 'Link del Video',
+            value: link,
+            setData: setLink,
+            error: errors.link && touched.link,
+            errorText: 'Ingrese el link del video',
+            type: 'text'
         },
         {
-            id:'image',
-            label:'Link imágen del video',
-            value:imagen,
-            setData:setImagen,
-            errorText: 'Link es obligatorio', 
-            type:'text'
+            id: 'imagen',
+            label: 'Link imágen del video',
+            value: imagen,
+            setData: setImagen,
+            error: errors.imagen && touched.imagen,
+            errorText: 'Link es obligatorio',
+            type: 'text'
         },
         {
-            id:'category',
-            label:'Escoja una categoría',
-            value:categoria,
-            setData:setCategoría,
-            errorText: 'Categoría es obligatoria', 
-            type:'select'
+            id: 'categoria',
+            label: 'Escoja una categoría',
+            value: categoria,
+            setData: setCategoria,
+            error: errors.categoria && touched.categoria,
+            errorText: 'Categoría es obligatoria',
+            type: 'select'
         },
         {
-            id:'description',
-            label:'Descripción',
-            value:descripcion,
-            setData:setDescripcion,
-            errorText: 'Ingrese la descripción', 
-            type:'text-area'
+            id: 'descripcion',
+            label: 'Descripción',
+            value: descripcion,
+            setData: setDescripcion,
+            error: errors.descripcion && touched.descripcion,
+            errorText: 'Ingrese la descripción',
+            type: 'text-area'
         },
         {
-            id:'code',
-            label:'Código de seguridad',
-            value:codigo,
-            setData:setCodigo,
-            errorText: 'Ingrese el código', 
-            type:'text'
+            id: 'codigo',
+            label: 'Código de seguridad',
+            value: codigo,
+            setData: setCodigo,
+            error: errors.codigo && touched.codigo,
+            errorText: 'Ingrese el código',
+            type: 'text'
         }
     ];
 
-    
-
-    //Manejar el envio de la informacion en SPA (Single Page Aplication)-No recargar pag
-
-    const handleSubmit=(e)=>{
+    // Manejar el envio de la informacion en SPA (Single Page Aplication)-No recargar pagina
+    const handleSubmit = (e) => {
         e.preventDefault();
-        let datosEnvio={
+        /*setSubmitted(true);  // Marca que se ha intentado enviar el formulario
+        
+        // Llama a las validaciones aquí
+        tipoInputs.forEach(input => validarCampo(input.id, input.value));
+      
+        // Verifica que todos los campos sean válidos antes de enviar los datos
+        if (Object.values(errors).every(error => !error)) {
+          const datosEnvio = {
             titulo,
             link,
             imagen,
             categoria,
             descripcion,
-            codigo
-        }  
-        //registrarVideo(datosEnvio)     
-    }
-    
-   
-
-    return <section className="form">
-
-        <form onSubmit={handleSubmit}>
-            <h2 className="tituloForm">Nuevo Video</h2>  
-               
-                 
-                 {tipoInputs.map((input)=>{
-                    return <div className="campo">
+            codigo,
+          };
+          // registrarVideo(datosEnvio);
+        }*/
+    };
+      
+    return (
+        <section className="form">
+            <form onSubmit={handleSubmit}>
+                <h2 className="tituloForm">Nuevo Video</h2>
+                {tipoInputs.map((input) => (
+                    <div className="campo" key={input.id}>
                         <CampoForm
                             id={input.id}
                             label={input.label}
@@ -113,20 +140,15 @@ const Formulario=()=>{
                             value={input.value}
                             setValue={input.setData}
                             handleBlur={handleBlur}               
-                            error={error}
+                            error={input.error}
                             errorText={input.errorText}
                             type={input.type}
                         />
                     </div>
-                        
-                 })}
-                  
-
-        
-        </form>
-        
-    </section>
-
+                ))}
+            </form>
+        </section>
+    );
 }
 
-export default Formulario
+export default Formulario;
