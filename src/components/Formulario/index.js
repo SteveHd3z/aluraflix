@@ -3,15 +3,32 @@ import './Formulario.css';
 import CampoForm from "./TextField";
 import Button from "../Button";
 import { useMyContext } from "../DataProvider";
+import { Link } from "react-router-dom";
 
 const Formulario = () => {
 
-    const [titulo, setTitulo] = useState("");
-    const [link, setLink] = useState("");
-    const [imagen, setImagen] = useState("");
-    const [categoria, setCategoria] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [codigo, setCodigo] = useState("");
+    const {btns,setVideos}=useMyContext()
+
+    const [formData, setFormData] = useState({
+        titulo: "",
+        link: "",
+        imagen: "",
+        categoria: "",
+        descripcion: "",
+        codigo: "",
+    });
+    
+    const limpiarCampos = () => {
+        setFormData({
+            titulo: "",
+            link: "",
+            imagen: "",
+            categoria: "",
+            descripcion: "",
+            codigo: ""
+        });
+    };
+    
 
     const [errors, setErrors] = useState({
         titulo: false,
@@ -28,8 +45,7 @@ const Formulario = () => {
         categoria: false,
         descripcion: false,
         codigo: false
-    });
-    const {btns,setVideos}=useMyContext()
+    });    
 
     // Validación de campos
     const validarCampo = useCallback((id, valor) => {
@@ -45,15 +61,14 @@ const Formulario = () => {
             [id]: true
         }));
         validarCampo(id, valor);
-    };
-    
+    };   
 
     const tipoInputs = [
         {
             id: 'titulo',
             label: 'Titulo',
-            value: titulo,
-            setData: setTitulo,
+            value: formData.titulo,
+            setData: setFormData,
             error: errors.titulo && touched.titulo, //Validación: Si tiene errores y ha sido tocado o perdido el foco
             errorText: 'Ingrese el titulo',
             type: 'text'
@@ -61,8 +76,8 @@ const Formulario = () => {
         {
             id: 'link',
             label: 'Link del Video',
-            value: link,
-            setData: setLink,
+            value: formData.link,
+            setData: setFormData,
             error: errors.link && touched.link,
             errorText: 'Ingrese el link del video',
             type: 'text'
@@ -70,8 +85,8 @@ const Formulario = () => {
         {
             id: 'imagen',
             label: 'Link imágen del video',
-            value: imagen,
-            setData: setImagen,
+            value: formData.imagen,
+            setData: setFormData,
             error: errors.imagen && touched.imagen,
             errorText: 'Link es obligatorio',
             type: 'text'
@@ -79,8 +94,8 @@ const Formulario = () => {
         {
             id: 'categoria',
             label: 'Escoja una categoría',
-            value: categoria,
-            setData: setCategoria,
+            value: formData.categoria,
+            setData: setFormData,
             error: errors.categoria && touched.categoria,
             errorText: 'Categoría es obligatoria',
             type: 'select'
@@ -88,8 +103,8 @@ const Formulario = () => {
         {
             id: 'descripcion',
             label: 'Descripción',
-            value: descripcion,
-            setData: setDescripcion,
+            value: formData.descripcion,
+            setData: setFormData,
             error: errors.descripcion && touched.descripcion,
             errorText: 'Ingrese la descripción',
             type: 'text-area'
@@ -97,31 +112,38 @@ const Formulario = () => {
         {
             id: 'codigo',
             label: 'Código de seguridad',
-            value: codigo,
-            setData: setCodigo,
+            value: formData.codigo,
+            setData: setFormData,
             error: errors.codigo && touched.codigo,
             errorText: 'Ingrese el código',
             type: 'text'
         }
-    ];
+    ];    
 
     // Manejar el envio de la informacion en SPA (Single Page Aplication)-No recargar pagina
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        const datosEnvio = { ...formData };
 
-        if (Object.values(errors).every(error => !error)) {
-          const datosEnvio = {
-            titulo,
-            link,
-            imagen,
-            categoria,
-            descripcion,
-            codigo,
-          };
+    
+        // Verificar si todos los campos están sin errores y han sido tocados
+        if (Object.values(errors).every(error => !error) && 
+            Object.values(touched).every(touch => touch)) {
             
-          setVideos((prevVideos) => [...prevVideos, datosEnvio]);
-          //console.log(datosEnvio)
-          
+            console.log('Se enviaron los datos: ', datosEnvio);
+            setVideos((prevVideos) => [...prevVideos, datosEnvio]);
+            alert('Los Datos se Enviaron Correctamente!')
+            limpiarCampos()
+            
+        } else {        
+            // Si algún campo no ha sido tocado, marcarlo como tocado
+            const newTouched = { ...touched };
+            for (let key in datosEnvio) {
+                newTouched[key] = true; // Marcar cada campo como tocado
+                validarCampo(key, datosEnvio[key]); // Validar cada campo
+            }
+            setTouched(newTouched); // Actualizar el estado de touched
         }
     };
       
@@ -156,18 +178,21 @@ const Formulario = () => {
                     Guardar
                 </Button>
                 <Button
-                    onClick={handleSubmit}
+                    onClick={limpiarCampos}
                     variant="btnClean"
                     datos={btns}
+                    type="button"  // Para evitar que se envíe la informacion 
                     >
                     Limpiar
                 </Button>
             </div>
             
             <Button
-                onClick={handleSubmit}
+                as={Link}
+                to='/category' 
                 variant="btnNewCategory"
                 datos={btns}
+                type="button" 
                 >
                 Nueva Categoría
             </Button>

@@ -47,6 +47,10 @@ const CampoForm = (props) => {
         padding: '10px',
         color: 'white',
       },
+      '& .css-uhyr2s-MuiInputBase-root-MuiInput-root.Mui-error':{
+        borderBottom: '4px solid #E53935 ',
+        marginLeft: '10px',
+      }
     };
 
     // Estilos específicos para el label dentro de Select
@@ -99,7 +103,10 @@ const CampoForm = (props) => {
               label={label}
               variant={variant}
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => setValue(prevFormData => ({
+                ...prevFormData,
+                [id]: e.target.value
+              }))}
               onBlur={(e) =>handleBlur(id, e.target.value)}
               error={error}
               helperText={error && errorText}
@@ -120,10 +127,13 @@ const CampoForm = (props) => {
                 label={label}
                 variant={variant}
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => setValue(prevFormData => ({
+                  ...prevFormData,
+                  [id]: e.target.value
+                }))}
                 onBlur={(e) =>handleBlur(id, e.target.value)}
                 error={error}
-                helperText={error && errorText}
+                //helperText={error && errorText}
                 sx={selectStyles}
               >
                 {categorias.map((categoria) => (
@@ -146,7 +156,10 @@ const CampoForm = (props) => {
                 label={label}
                 variant={variant}
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => setValue(prevFormData => ({
+                  ...prevFormData,
+                  [id]: e.target.value
+                }))}
                 onBlur={(e) =>handleBlur(id, e.target.value)}
                 error={error}
                 helperText={error && errorText}
