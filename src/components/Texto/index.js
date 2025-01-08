@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import { colorTexto } from "../Ui/Variables";
 
 const Text=styled.p`
-    //Espacio generado por si necesitamos texto con características diferentes
+    color: ${colorTexto};
+    margin-left: 15px;
+    font-size: 18px;
+
 `;
 
 export default Text;
