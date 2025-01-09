@@ -8,6 +8,8 @@ export const useMyContext = () => useContext(dataContext);
 
 export const DataProvider=({children})=>{
 
+  //datos necesarios para la ejecución del programa
+
   const [btns, setBtn]=useState([
       {
         tipo: 'btnNew',
@@ -31,7 +33,7 @@ export const DataProvider=({children})=>{
       }
     ]);
 
-    const [videos,setVideos]=useState([
+  const [videos,setVideos]=useState([
         {
           titulo:"Que significa pensar como programador",
           link:"https://www.youtube.com/watch?v=ov7vA5HFe6w",
@@ -83,7 +85,7 @@ export const DataProvider=({children})=>{
           codigo:"2023i"
         }
       ]);
-      const [categorias,setCategorias]=useState([
+  const [categorias,setCategorias]=useState([
         {
           nombre:"Front End",
           descripcion:"parte del desarrollo web que se dedica a la parte frontal de un sitio web",
@@ -109,12 +111,20 @@ export const DataProvider=({children})=>{
           codigo:"gyg"
         }
       ]);
+
+  //Métodos para el manejo de la información por medio de CRUD
+  //Crear
+  const crearVideo=(nuevoVideo)=>{
+    setVideos((prevVideos) => [...prevVideos, nuevoVideo]);
+  }
+
+
       
 
 
     return (
         <dataContext.Provider            
-          value={{videos,setVideos,categorias,setCategorias,btns,setBtn}}
+          value={{videos,crearVideo,categorias,setCategorias,btns,setBtn}}
         >
           {children}
         </dataContext.Provider>

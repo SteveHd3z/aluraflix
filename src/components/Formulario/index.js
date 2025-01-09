@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Formulario = () => {
 
-    const {btns,setVideos}=useMyContext()
+    const {btns,crearVideo,videos}=useMyContext()
 
     const [formData, setFormData] = useState({
         titulo: "",
@@ -54,6 +54,11 @@ const Formulario = () => {
             [id]: valor.trim() === ''
         }));
     }, []);
+
+    //Validar si el video ya existe
+    const existeVideo=(link)=>{
+        return videos.some((video)=>video.link === link);
+    };
     
     const handleBlur = (id, valor) => {
         setTouched((prevTouched) => ({
@@ -131,10 +136,19 @@ const Formulario = () => {
         if (Object.values(errors).every(error => !error) && 
             Object.values(touched).every(touch => touch)) {
             
-            console.log('Se enviaron los datos: ', datosEnvio);
-            setVideos((prevVideos) => [...prevVideos, datosEnvio]);
-            alert('Los Datos se Enviaron Correctamente!')
-            limpiarCampos()
+            console.log('Datos a enviar: ', datosEnvio);
+
+            if (existeVideo(datosEnvio.link)){
+                alert("El Video ya se Encuentra Registrado."); 
+                setErrors((prevErrors)=>({...prevErrors, link:true, }))          
+                return;
+            }else{
+                crearVideo(datosEnvio)
+                alert('Los Datos se Enviaron Correctamente!')
+                limpiarCampos()
+            }
+
+            
             
         } else {        
             // Si algún campo no ha sido tocado, marcarlo como tocado

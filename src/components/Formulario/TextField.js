@@ -50,7 +50,13 @@ const CampoForm = (props) => {
       '& .css-uhyr2s-MuiInputBase-root-MuiInput-root.Mui-error':{
         borderBottom: '4px solid #E53935 ',
         marginLeft: '10px',
-      }
+      },
+      '& input:-webkit-autofill': {
+        WebkitBoxShadow: '0 0 0 100px #53585D inset', // Cambia el fondo al mismo que el input
+        WebkitTextFillColor: 'white', // Cambia el color del texto
+        //borderRadius: '8px', // Asegura que los bordes sean consistentes
+        transition: 'background-color 5000s ease-in-out 0s',        
+      },
     };
 
     // Estilos específicos para el label dentro de Select
